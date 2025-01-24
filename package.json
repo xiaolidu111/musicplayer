@@ -2,11 +2,17 @@
 	"name": "electron-react-app",
 	"version": "1.0.0",
 	"description": "Electron React Application",
+	"author": {
+		"name": "Your Name",
+		"email": "your.email@example.com"
+	},
 	"scripts": {
 		"start": "electron .",
 		"watch": "webpack --config webpack.config.js --watch",
 		"build": "webpack --config webpack.config.js",
-		"dev": "concurrently \"npm run watch\" \"npm start\""
+		"dev": "concurrently \"npm run watch\" \"npm start\"",
+		"pack": "electron-builder --dir",
+		"dist": "npm run build && electron-builder"
 	},
 	"main": "main.js",
 	"dependencies": {
@@ -24,8 +30,53 @@
 		"css-loader": "^7.1.2",
 		"electron": "^29.1.0",
 		"electron-reload": "^2.0.0-alpha.1",
+		"electron-builder": "^24.0.0",
 		"style-loader": "^4.0.0",
 		"webpack": "^5.90.3",
 		"webpack-cli": "^5.1.4"
+	},
+	"build": {
+		"appId": "com.yourcompany.musicplayer",
+		"productName": "音乐播放器",
+		"copyright": "Copyright © 2024",
+		"mac": {
+			"category": "public.app-category.music",
+			"target": [
+				{
+					"target": "dmg",
+					"arch": [
+						"arm64"
+					]
+				}
+			],
+			"icon": "build/icon.icns"
+		},
+		"files": [
+			"dist/**/*",
+			"main.js",
+			"index.html",
+			"styles.css"
+		],
+		"directories": {
+			"output": "release"
+		},
+		"asar": true,
+		"asarUnpack": [
+			"node_modules/**/*"
+		],
+		"dmg": {
+			"contents": [
+				{
+					"x": 130,
+					"y": 220
+				},
+				{
+					"x": 410,
+					"y": 220,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		}
 	}
 }

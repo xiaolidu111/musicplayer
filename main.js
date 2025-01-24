@@ -1,6 +1,10 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-require('electron-reload')(__dirname);
+
+// 只在开发环境中加载 electron-reload
+if (process.env.NODE_ENV === 'development') {
+	require('electron-reload')(__dirname);
+}
 
 function createWindow() {
 	const win = new BrowserWindow({
@@ -16,19 +20,20 @@ function createWindow() {
 		},
 	});
 
+	// 根据是否是开发环境加载不同的路径
+	if (process.env.NODE_ENV === 'development') {
+		win.loadFile(path.join(__dirname, 'index.html'));
+		win.webContents.openDevTools();
+	} else {
+		win.loadFile(path.join(__dirname, 'index.html'));
+	}
+
 	win.on('resize', () => {
 		const [width, height] = win.getSize();
 		if (width < 990) {
 			win.setSize(990, height);
 		}
 	});
-
-	win.loadFile(path.join(__dirname, 'index.html'));
-
-	// 在开发环境下打开开发者工具
-	if (process.env.NODE_ENV === 'development') {
-		win.webContents.openDevTools();
-	}
 }
 
 app.whenReady().then(() => {
