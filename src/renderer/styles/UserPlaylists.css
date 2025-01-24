@@ -1,0 +1,477 @@
+/* 用户歌单页面容器 */
+.user-playlists {
+	height: calc(100% - 20px);
+	overflow-y: auto;
+	padding: 20px;
+}
+
+/* 歌单分类区域 */
+.playlists-section {
+	margin-bottom: 40px;
+}
+
+.section-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.section-header h3 {
+	font-size: 20px;
+	color: #333;
+	font-weight: 600;
+	margin: 0;
+}
+
+.create-playlist-btn {
+	padding: 8px 16px;
+	border: 1px solid #ec4141;
+	border-radius: 20px;
+	background: none;
+	color: #ec4141;
+	cursor: pointer;
+	transition: all 0.3s;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 14px;
+}
+
+.create-playlist-btn:hover {
+	background: #ec4141;
+	color: #fff;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(236, 65, 65, 0.2);
+}
+
+/* 歌单列表样式 */
+.playlist-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 24px;
+	padding: 4px;
+}
+
+.playlist-item {
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.3s;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	position: relative;
+}
+
+.playlist-item:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-item img {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	transition: all 0.3s;
+}
+
+.playlist-item:hover img {
+	transform: scale(1.05);
+}
+
+.playlist-info {
+	padding: 12px;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	color: #fff;
+}
+
+.playlist-info h4 {
+	margin: 0 0 4px;
+	font-size: 15px;
+	font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.playlist-info p {
+	margin: 0;
+	font-size: 13px;
+	opacity: 0.8;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* 创建歌单模态框样式 */
+.create-playlist-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+.modal-content {
+	background: #fff;
+	padding: 24px;
+	border-radius: 12px;
+	width: 400px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.modal-header h3 {
+	margin: 0;
+	font-size: 18px;
+	color: #333;
+}
+
+.close-button {
+	background: none;
+	border: none;
+	font-size: 20px;
+	color: #999;
+	cursor: pointer;
+	padding: 4px;
+}
+
+.close-button:hover {
+	color: #666;
+}
+
+.modal-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.form-group label {
+	font-size: 14px;
+	color: #666;
+}
+
+.form-group input {
+	padding: 8px 12px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	font-size: 14px;
+}
+
+.form-group input:focus {
+	outline: none;
+	border-color: #ec4141;
+}
+
+.modal-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.modal-actions button {
+	padding: 8px 20px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-size: 14px;
+}
+
+.cancel-button {
+	background: none;
+	border: 1px solid #ddd;
+	color: #666;
+}
+
+.cancel-button:hover {
+	background: #f5f5f5;
+}
+
+.submit-button {
+	background: #ec4141;
+	border: none;
+	color: #fff;
+}
+
+.submit-button:hover {
+	background: #d73535;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(236, 65, 65, 0.2);
+}
+
+.submit-button:disabled {
+	background: #ffa6a6;
+	cursor: not-allowed;
+	transform: none;
+	box-shadow: none;
+}
+
+/* 创建的歌单和收藏的歌单页面样式 */
+.created-playlists,
+.collected-playlists {
+	padding: 20px;
+	height: 100%;
+	overflow-y: auto;
+}
+
+.playlists-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 24px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.playlists-header h2 {
+	font-size: 24px;
+	color: #333;
+	margin: 0;
+}
+
+.playlist-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 24px;
+	padding: 4px;
+}
+
+.playlist-card {
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.3s;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.playlist-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-cover {
+	position: relative;
+	width: 100%;
+	padding-top: 100%;
+}
+
+.playlist-cover img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.playlist-play-count {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	padding: 4px 8px;
+	border-radius: 12px;
+	font-size: 12px;
+}
+
+/* 加载和错误状态样式 */
+.loading-container,
+.error-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: #666;
+}
+
+.loading-container p,
+.error-container p {
+	margin-top: 12px;
+}
+
+.error-container button {
+	margin-top: 16px;
+	padding: 8px 20px;
+	background: #ec4141;
+	color: #fff;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.error-container button:hover {
+	background: #d73535;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(236, 65, 65, 0.2);
+}
+
+/* 添加歌单详情页面的样式 */
+.playlist-detail {
+	padding: 20px;
+	height: 100%;
+	overflow-y: auto;
+}
+
+/* 歌单头部信息样式 */
+.playlist-header {
+	display: flex;
+	gap: 24px;
+	margin-bottom: 32px;
+	padding: 20px;
+	background: rgba(0, 0, 0, 0.02);
+	border-radius: 12px;
+}
+
+.playlist-header img {
+	width: 200px;
+	height: 200px;
+	border-radius: 12px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+	object-fit: cover;
+}
+
+.playlist-text {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.playlist-text h2 {
+	font-size: 28px;
+	font-weight: 600;
+	color: #333;
+	margin: 0 0 12px;
+}
+
+.playlist-text p {
+	font-size: 14px;
+	color: #666;
+	line-height: 1.6;
+	margin: 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.playlist-stats {
+	display: flex;
+	gap: 24px;
+	margin-top: 16px;
+}
+
+.playlist-stats span {
+	font-size: 14px;
+	color: #666;
+}
+
+/* 歌曲列表表格样式 */
+.song-table {
+	width: 100%;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.song-table table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.song-table th,
+.song-table td {
+	padding: 16px;
+	text-align: left;
+	font-size: 14px;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.song-table th {
+	font-weight: normal;
+	color: #999;
+	background: #fafafa;
+}
+
+.song-table tbody tr {
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.song-table tbody tr:hover {
+	background: #f8f8f8;
+}
+
+.song-table td:first-child {
+	color: #999;
+	width: 60px;
+	text-align: center;
+}
+
+.song-name {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.play-icon {
+	opacity: 0;
+	color: #ec4141;
+	transition: opacity 0.2s;
+}
+
+.song-table tbody tr:hover .play-icon {
+	opacity: 1;
+}
+
+/* 返回按钮样式 */
+.back-button {
+	padding: 8px 16px;
+	border: 1px solid #ddd;
+	border-radius: 20px;
+	background: none;
+	color: #666;
+	cursor: pointer;
+	transition: all 0.2s;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 20px;
+}
+
+.back-button:hover {
+	color: #ec4141;
+	border-color: #ec4141;
+}

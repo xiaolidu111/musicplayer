@@ -1,0 +1,144 @@
+.song-table {
+	width: 100%;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+	scrollbar-width: thin;
+	scrollbar-color: #ddd transparent;
+}
+
+.song-table table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+.song-table thead {
+	position: sticky;
+	top: 0;
+	background: #fafafa;
+	z-index: 1;
+}
+
+.song-table th {
+	padding: 16px;
+	text-align: left;
+	color: #999;
+	font-weight: normal;
+	border-bottom: 1px solid #eee;
+	background: #fafafa;
+}
+
+.song-table td {
+	padding: 16px;
+	border-bottom: 1px solid #f5f5f5;
+	font-size: 14px;
+}
+
+/* 设置列宽 */
+.song-table th:nth-child(1),
+.song-table td:nth-child(1) {
+	width: 60px;
+	text-align: center;
+	color: #999;
+}
+
+.song-table th:nth-child(2),
+.song-table td:nth-child(2) {
+	width: 40%;
+}
+
+.song-table th:nth-child(3),
+.song-table td:nth-child(3) {
+	width: 20%;
+}
+
+.song-table th:nth-child(4),
+.song-table td:nth-child(4) {
+	width: 25%;
+}
+
+.song-table th:nth-child(5),
+.song-table td:nth-child(5) {
+	width: 15%;
+	text-align: right;
+	padding-right: 20px;
+}
+
+.song-row {
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.song-row:hover {
+	background: #f8f8f8;
+}
+
+.song-name {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.play-icon {
+	opacity: 0;
+	transition: opacity 0.2s;
+	color: #ec4141;
+}
+
+.song-row:hover .play-icon {
+	opacity: 1;
+}
+
+/* 文本溢出处理 */
+.song-name,
+.song-table td {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* 添加加载更多相关样式 */
+.loading-more {
+	padding: 16px;
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+}
+
+.loading-indicator {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.loading-indicator .anticon {
+	font-size: 16px;
+}
+
+.no-more {
+	color: #999;
+	font-size: 14px;
+	padding: 16px;
+	text-align: center;
+}
+
+/* 优化滚动条样式 */
+.song-table::-webkit-scrollbar {
+	width: 6px;
+}
+
+.song-table::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.song-table::-webkit-scrollbar-thumb {
+	background-color: #ddd;
+	border-radius: 3px;
+}
+
+.song-table::-webkit-scrollbar-thumb:hover {
+	background-color: #ccc;
+}

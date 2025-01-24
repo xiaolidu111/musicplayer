@@ -1,0 +1,628 @@
+.discover-music {
+	padding: 20px;
+}
+
+.category-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+.category-item {
+	padding: 6px 12px;
+	border: 1px solid #ddd;
+	border-radius: 16px;
+	background: none;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.category-item:hover {
+	color: #ec4141;
+	border-color: #ec4141;
+}
+
+.category-item.active {
+	color: white;
+	background: #ec4141;
+	border-color: #ec4141;
+}
+
+.recommend-playlists h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.playlist-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 24px;
+	padding: 4px;
+	margin-bottom: 20px;
+}
+
+.playlist-card {
+	cursor: pointer;
+	transition: all 0.3s ease;
+	border-radius: 8px;
+	overflow: hidden;
+	background: #fff;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.playlist-cover {
+	position: relative;
+	width: 100%;
+	padding-top: 100%; /* 1:1 宽高比 */
+}
+
+.playlist-cover img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.playlist-play-count {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	padding: 2px 6px;
+	border-radius: 10px;
+	font-size: 12px;
+}
+
+.playlist-info {
+	padding: 10px;
+}
+
+.playlist-info h3 {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.4;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.playlist-info p {
+	margin: 5px 0 0;
+	font-size: 12px;
+	color: #666;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.loading-container,
+.error-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 300px;
+}
+
+.error-container button {
+	margin-top: 10px;
+	padding: 8px 16px;
+	border: none;
+	background: #1890ff;
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.error-container button:hover {
+	background: #40a9ff;
+}
+
+/* 添加歌单详情相关样式 */
+.playlist-detail {
+	padding: 20px;
+	/* height: 100%; */
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.back-button {
+	padding: 8px 16px;
+	background: none;
+	border: 1px solid #ddd;
+	border-radius: 20px;
+	cursor: pointer;
+	margin-bottom: 20px;
+	transition: all 0.3s;
+}
+
+.back-button:hover {
+	background: #f5f5f5;
+	border-color: #ccc;
+}
+
+.playlist-header {
+	display: flex;
+	gap: 30px;
+	padding: 20px;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.02), transparent);
+	border-radius: 12px;
+	margin-bottom: 30px;
+}
+
+.playlist-header img {
+	width: 200px;
+	height: 200px;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-text {
+	flex: 1;
+	min-width: 0;
+}
+
+.playlist-text h2 {
+	margin: 0 0 12px;
+	font-size: 24px;
+	color: #333;
+}
+
+.playlist-text p {
+	color: #666;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.song-table {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.song-table table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 800px;
+}
+
+.song-table th {
+	padding: 12px 16px;
+	text-align: left;
+	color: #999;
+	font-weight: normal;
+	border-bottom: 1px solid #eee;
+	background: #fafafa;
+}
+
+.song-table td {
+	padding: 12px 16px;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.song-row {
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.song-row:hover {
+	background: #f5f5f5;
+}
+
+.song-name {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.play-icon {
+	opacity: 0;
+	transition: all 0.2s;
+	color: #ec4141;
+}
+
+.song-row:hover .play-icon {
+	opacity: 1;
+}
+
+/* 设置表格列宽 */
+.song-table th:nth-child(1),
+.song-table td:nth-child(1) {
+	width: 60px;
+}
+
+.song-table th:nth-child(2),
+.song-table td:nth-child(2) {
+	width: 40%;
+}
+
+.song-table th:nth-child(3),
+.song-table td:nth-child(3) {
+	width: 20%;
+}
+
+.song-table th:nth-child(4),
+.song-table td:nth-child(4) {
+	width: 30%;
+}
+
+.song-table th:nth-child(5),
+.song-table td:nth-child(5) {
+	width: 80px;
+}
+
+/* 文本溢出处理 */
+.song-name,
+.song-table td {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* 侧边栏样式优化 */
+.sidebar {
+	width: 199px;
+	background: #fff;
+	border-right: 1px solid #eee;
+	padding: 20px 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 2px 0 8px rgba(0, 0, 0, 0.02);
+}
+
+.logo {
+	padding: 0 24px 20px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #ec4141;
+	border-bottom: 1px solid #f5f5f5;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* 用户区域样式优化 */
+.user-section {
+	padding: 20px 0px;
+	border-bottom: 1px solid #f5f5f5;
+	margin-bottom: 8px;
+}
+
+.user-info {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.avatar {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nickname {
+	flex: 1;
+	font-size: 15px;
+	color: #333;
+	font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.login-button,
+.logout-button {
+	padding: 8px 20px;
+	border: 1px solid #ec4141;
+	border-radius: 20px;
+	background: none;
+	color: #ec4141;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.login-button:hover,
+.logout-button:hover {
+	background: #ec4141;
+	color: #fff;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(236, 65, 65, 0.2);
+}
+
+/* 导航菜单样式优化 */
+.sidebar nav {
+	flex: 1;
+	overflow-y: auto;
+}
+
+.sidebar nav ul {
+	list-style: none;
+	padding: 8px 0;
+	margin: 0;
+}
+
+.menu-item {
+	display: flex;
+	align-items: center;
+	padding: 14px 24px;
+	cursor: pointer;
+	transition: all 0.3s;
+	color: #666;
+	position: relative;
+}
+
+.menu-item:hover {
+	background: #fef2f2;
+	color: #ec4141;
+}
+
+.menu-item.active {
+	color: #ec4141;
+	background: #fef2f2;
+	font-weight: 500;
+}
+
+.menu-item.active::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 3px;
+	height: 16px;
+	background: #ec4141;
+	border-radius: 0 3px 3px 0;
+}
+
+.menu-item .anticon {
+	margin-right: 12px;
+	font-size: 18px;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.menu-item span {
+	font-size: 15px;
+	letter-spacing: 0.5px;
+}
+
+/* 滚动条样式 */
+.sidebar nav::-webkit-scrollbar {
+	width: 4px;
+}
+
+.sidebar nav::-webkit-scrollbar-thumb {
+	background: #ddd;
+	border-radius: 2px;
+}
+
+.sidebar nav::-webkit-scrollbar-thumb:hover {
+	background: #ccc;
+}
+
+/* 登录提示样式 */
+.login-prompt {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 300px;
+	color: #999;
+	font-size: 15px;
+	gap: 16px;
+}
+
+.login-prompt button {
+	padding: 8px 24px;
+	background: #ec4141;
+	color: white;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.login-prompt button:hover {
+	background: #d73535;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(236, 65, 65, 0.2);
+}
+
+/* 主内容区域样式 */
+.main-content {
+	flex: 1;
+	height: 100%;
+	overflow: hidden;
+}
+
+.content-container {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+/* 用户歌单页面样式 */
+.user-playlists,
+.created-playlists,
+.collected-playlists {
+}
+
+/* 歌单分类区域 */
+.playlists-section {
+	margin-bottom: 40px;
+}
+
+.playlists-section:last-child {
+	margin-bottom: 0;
+}
+
+.section-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.section-header h2 {
+	font-size: 24px;
+	color: #333;
+	margin: 0;
+	font-weight: 600;
+}
+
+.playlist-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 24px;
+	padding: 4px;
+}
+
+/* 歌单卡片样式优化 */
+.playlist-item {
+	position: relative;
+	border-radius: 12px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.3s;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	aspect-ratio: 1;
+}
+
+.playlist-item:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.3s;
+}
+
+.playlist-item:hover img {
+	transform: scale(1.05);
+}
+
+.playlist-info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 16px;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+	color: #fff;
+}
+
+.playlist-info h4 {
+	margin: 0 0 8px;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 1.4;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.playlist-info p {
+	margin: 0;
+	font-size: 13px;
+	opacity: 0.9;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* 创建歌单按钮样式优化 */
+.create-playlist-btn {
+	padding: 8px 20px;
+	border: 1px solid #ec4141;
+	border-radius: 20px;
+	background: none;
+	color: #ec4141;
+	cursor: pointer;
+	transition: all 0.3s;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 14px;
+}
+
+.create-playlist-btn:hover {
+	background: #ec4141;
+	color: #fff;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(236, 65, 65, 0.2);
+}
+
+/* 加载和错误状态容器样式 */
+.loading-container,
+.error-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+/* 登录提示样式 */
+.login-prompt {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #666;
+}
+
+.login-prompt p {
+	margin-bottom: 16px;
+	font-size: 16px;
+}
+
+.login-prompt button {
+	padding: 8px 24px;
+	background: #ec4141;
+	color: white;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.login-prompt button:hover {
+	background: #d73535;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(236, 65, 65, 0.2);
+}
+
+.discover-container {
+	padding: 20px;
+	background: #fafafa;
+}
+
+/* 其他特定于发现音乐页面的样式 */

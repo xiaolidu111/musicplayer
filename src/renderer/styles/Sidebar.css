@@ -1,0 +1,147 @@
+.sidebar {
+	width: 250px;
+	height: 100vh;
+	background: #fff;
+	border-right: 1px solid #eee;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 2px 0 8px rgba(0, 0, 0, 0.02);
+}
+
+.logo {
+	padding: 0 24px 20px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #ec4141;
+	border-bottom: 1px solid #f5f5f5;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* 用户区域样式 */
+.user-section {
+	padding: 20px 24px;
+	border-bottom: 1px solid #f5f5f5;
+	margin-bottom: 8px;
+}
+
+.user-info {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 0;
+}
+
+.avatar {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nickname {
+	flex: 1;
+	font-size: 15px;
+	color: #333;
+	font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.login-button,
+.logout-button {
+	padding: 8px 20px;
+	border: 1px solid #ec4141;
+	border-radius: 20px;
+	background: none;
+	color: #ec4141;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.login-button:hover,
+.logout-button:hover {
+	background: #ec4141;
+	color: #fff;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(236, 65, 65, 0.2);
+}
+
+/* 导航菜单样式 */
+.sidebar nav {
+	flex: 1;
+	overflow-y: auto;
+}
+
+.sidebar nav ul {
+	list-style: none;
+	padding: 8px 0;
+	margin: 0;
+}
+
+.menu-item {
+	display: flex;
+	align-items: center;
+	padding: 14px 24px;
+	cursor: pointer;
+	transition: all 0.3s;
+	color: #666;
+	position: relative;
+}
+
+.menu-item:hover {
+	background: #fef2f2;
+	color: #ec4141;
+}
+
+.menu-item.active {
+	color: #ec4141;
+	background: #fef2f2;
+	font-weight: 500;
+}
+
+.menu-item.active::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 3px;
+	height: 16px;
+	background: #ec4141;
+	border-radius: 0 3px 3px 0;
+}
+
+.menu-item .anticon {
+	margin-right: 12px;
+	font-size: 18px;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.menu-item span {
+	font-size: 15px;
+	letter-spacing: 0.5px;
+}
+
+/* 滚动条样式 */
+.sidebar nav::-webkit-scrollbar {
+	width: 4px;
+}
+
+.sidebar nav::-webkit-scrollbar-thumb {
+	background: #ddd;
+	border-radius: 2px;
+}
+
+.sidebar nav::-webkit-scrollbar-thumb:hover {
+	background: #ccc;
+}
